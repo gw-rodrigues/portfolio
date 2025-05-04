@@ -1,3 +1,4 @@
+'use client'
 import React, { Suspense, useRef } from 'react'
 import { Canvas, ThreeElements, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
@@ -32,7 +33,6 @@ function FloatingCube(props: ThreeElements['mesh']) {
 function FloatingCubes() {
   return (
     <>
-      {/* Renderizando cubos flutuantes animados */}
       {[...Array(10)].map((_, i) => (
         <FloatingCube
           key={i}
@@ -46,12 +46,12 @@ function FloatingCubes() {
 // Componente principal do fundo flutuante com o modelo 3D
 export default function FloatingBackground() {
   return (
-    <div className="fixed w-full h-dvh z-0">
+    <div className="absolute w-full h-full z-0">
       <Suspense fallback={<span>Loading...</span>}>
-        <Canvas className="absolute top-0 left-0 w-full h-full">
+        <Canvas className="w-full h-full left-0 top-0">
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.5} />
           <FloatingCubes />
         </Canvas>
       </Suspense>

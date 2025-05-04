@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <div className="bg-gray-900 text-white relative">
       <FloatingBackground />
-      <header className="flex flex-col items-center py-80 px-4">
+      <header className="flex flex-col items-center py-80 px-4 relative z-10">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -146,7 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto mt-30 px-4">
+      <section className="max-w-7xl mx-auto mt-30 px-4 relative z-10">
         <h2 className="text-2xl font-semibold mb-4 border-b border-gray-700 pb-2">
           Skills
         </h2>

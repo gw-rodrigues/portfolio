@@ -10,7 +10,7 @@ type TGithubProps = {
   name: string
   description: string
   html_url: string
-  topics: string
+  topics: string[]
   owner: { avatar_url: string; login: string }
 }
 
@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <div className="bg-gray-900 text-white relative">
       <FloatingBackground />
-      <header className="flex flex-col items-center py-80 px-4 relative z-10">
+      <header className="flex flex-col items-center py-50 md:py-80 px-4 relative z-10">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,7 +104,7 @@ export default function Home() {
             <motion.div
               key={repo.id}
               whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.25 * i }}
+              transition={{ duration: 0.25 }}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="bg-gray-800 rounded-xl overflow-hidden shadow-md transition-all border-6 border-gray-800  hover:border-purple-900 group duration-200"
@@ -118,16 +118,19 @@ export default function Home() {
                 priority
               />
 
-              <div className="p-4  flex flex-col justify-between">
+              <div className="p-4 h-32 flex flex-col justify-between overflow-hidden">
                 <ul className="flex flex-wrap gap-3 text-[.7rem] text-gray-300">
-                  {skills.map((skill) => (
-                    <li
-                      key={skill}
-                      className="bg-gray-700 px-2 py-1 rounded-full "
-                    >
-                      {skill}
-                    </li>
-                  ))}
+                  {repo.topics.map(
+                    (skill) =>
+                      skill !== 'portfolio' && (
+                        <li
+                          key={skill}
+                          className="bg-gray-700 px-2 py-1 rounded-full "
+                        >
+                          {skill}
+                        </li>
+                      ),
+                  )}
                 </ul>
               </div>
 
@@ -177,7 +180,7 @@ export default function Home() {
             LinkedIn
           </Link>
           <Link
-            href="mailto:seuemail@email.com"
+            href="mailto:rodrigues.gw@gmail.com"
             className="hover:text-white text-blue-400"
           >
             Email

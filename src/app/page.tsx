@@ -100,7 +100,7 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6 mt-10">
           {/* Exibe os repositórios filtrados com a tag 'portfolio' */}
-          {repos.map((repo: TGithubProps, i) => (
+          {repos.map((repo: TGithubProps) => (
             <motion.div
               key={repo.id}
               whileHover={{ scale: 1.05 }}
